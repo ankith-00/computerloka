@@ -14,6 +14,7 @@ const slides = [
         description:
             "From cracked screens to dead batteries, our certified technicians get your laptop back to full speed — with genuine parts and same-day turnaround.",
         image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1600&q=80",
+        cta: { label: "Book Laptop Repair", href: "/services/laptop" },
     },
     {
         id: "mobile",
@@ -21,6 +22,7 @@ const slides = [
         description:
             "Original-quality glass, OLED panels, charging ports and camera repairs. Bring your phone back to life with a quick, affordable fix.",
         image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80",
+        cta: { label: "Book Mobile Repair", href: "/services/mobile" },
     },
     {
         id: "wifi",
@@ -28,6 +30,7 @@ const slides = [
         description:
             "Mesh setups, office networks and signal boosters that eliminate dead zones. We design and install a network built for your space.",
         image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1600&q=80",
+        cta: { label: "Get Wi-Fi Setup", href: "/services/wifi" },
     },
     {
         id: "web",
@@ -35,6 +38,7 @@ const slides = [
         description:
             "Modern, lightning-fast and mobile-first websites built to convert. From landing pages to full-scale web apps.",
         image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
+        cta: { label: "Start a Project", href: "/services/web" },
     },
     {
         id: "marketplace",
@@ -42,6 +46,7 @@ const slides = [
         description:
             "Shop pre-owned laptops and phones that are tested, certified and backed by warranty — at a fraction of retail price.",
         image: "https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&w=1600&q=80",
+        cta: { label: "Browse Marketplace", href: "/marketplace" },
     },
 ];
 
@@ -138,16 +143,14 @@ export default function Hero() {
                         return (
                             <div
                                 key={slide.id}
-                                className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${
-                                    isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
-                                }`}
+                                className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out ${isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                                    }`}
                                 aria-hidden={!isActive}
                             >
                                 {/* Background Image with Ken Burns / Parallax Zoom */}
                                 <div
-                                    className={`absolute inset-0 h-full w-full transform transition-transform duration-[5000ms] ease-out ${
-                                        isActive ? "scale-105" : "scale-115"
-                                    }`}
+                                    className={`absolute inset-0 h-full w-full transform transition-transform duration-[5000ms] ease-out ${isActive ? "scale-105" : "scale-115"
+                                        }`}
                                 >
                                     <Image
                                         fill
@@ -162,11 +165,11 @@ export default function Hero() {
                                 </div>
 
                                 {/* Text content with Parallax Slide-up stagger */}
-                                <div className="relative mx-auto flex h-full max-w-7xl items-end pb-36 pt-16 px-4 sm:items-center sm:px-6 sm:pb-32 sm:pt-12 lg:px-8">
+                                {/* Text content with Parallax Slide-up stagger */}
+                                <div className="relative mx-auto flex h-full max-w-7xl items-center pb-16 pt-16 px-4 sm:pb-32 sm:pt-12 lg:px-8">
                                     <div
-                                        className={`max-w-2xl transform transition-all duration-1000 ease-out ${
-                                            isActive ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                                        }`}
+                                        className={`max-w-2xl transform transition-all duration-1000 ease-out ${isActive ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                                            }`}
                                     >
                                         <h1
                                             className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
@@ -178,6 +181,14 @@ export default function Hero() {
                                         <p className="mt-1 max-w-xl text-sm leading-relaxed text-zinc-300 sm:mt-3 sm:text-lg">
                                             {slide.description}
                                         </p>
+
+                                        <Link
+                                            href={slide.cta.href}
+                                            className="mt-5 inline-flex items-center gap-2 rounded-[0.4em] border border-white bg-white px-5 py-2.5 text-sm font-semibold text-zinc-950 transition-colors hover:bg-transparent hover:text-white sm:mt-6"
+                                        >
+                                            {slide.cta.label}
+                                            <GoArrowUpRight className="h-4 w-4" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -185,44 +196,44 @@ export default function Hero() {
                     })}
                 </div>
 
-            <div className="absolute inset-x-0 bottom-4 z-30 sm:bottom-6 lg:bottom-8">
-                <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-                    <div className="overflow-hidden rounded-xl border-0 bg-white shadow-xl shadow-black/10 backdrop-blur-sm sm:rounded-2xl sm:shadow-2xl sm:shadow-black/15">
-                        <div className="grid grid-cols-[1.15fr_1.15fr_1.15fr_1.15fr_0.65fr]">
-                            {quickServices.map((service) => (
+                <div className="absolute inset-x-0 bottom-4 z-30 sm:bottom-6 lg:bottom-8">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+                        <div style={{ borderRadius: "0.4em" }} className="overflow-hidden border-0 bg-white shadow-xl shadow-black/10 backdrop-blur-sm sm:shadow-2xl sm:shadow-black/15">
+                            <div className="grid grid-cols-[1.15fr_1.15fr_1.15fr_1.15fr_0.65fr]">
+                                {quickServices.map((service) => (
+                                    <Link
+                                        key={service.label}
+                                        href={service.href}
+                                        className="group flex flex-col items-center gap-1.5 px-2 py-3.5 transition-colors hover:bg-zinc-50 sm:flex-row sm:gap-3 sm:px-6 sm:py-5"
+                                    >
+                                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-900 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white sm:h-9 sm:w-9">
+                                            {service.icon}
+                                        </span>
+                                        <span className="flex min-w-0 flex-col">
+                                            <span className="text-[11px] font-semibold leading-tight text-zinc-800 sm:text-sm">{service.label}</span>
+                                            <span className="mt-0.5 hidden text-[11px] leading-tight text-zinc-400 sm:block">{service.subheading}</span>
+                                        </span>
+                                    </Link>
+                                ))}
+
+                                {/* Explore */}
                                 <Link
-                                    key={service.label}
-                                    href={service.href}
-                                    className="group flex flex-col items-center gap-1.5 px-2 py-3.5 transition-colors hover:bg-zinc-50 sm:flex-row sm:gap-3 sm:px-6 sm:py-5"
+                                    href="/services"
+                                    className="group flex flex-col items-center gap-1.5 px-2 py-3.5 transition-colors hover:bg-zinc-50 sm:flex-row sm:gap-3 sm:px-4 sm:py-5"
                                 >
                                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-900 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white sm:h-9 sm:w-9">
-                                        {service.icon}
+                                        <GoArrowUpRight className="h-5 w-5" />
                                     </span>
                                     <span className="flex min-w-0 flex-col">
-                                        <span className="text-[11px] font-semibold leading-tight text-zinc-800 sm:text-sm">{service.label}</span>
-                                        <span className="mt-0.5 hidden text-[11px] leading-tight text-zinc-400 sm:block">{service.subheading}</span>
+                                        <span className="text-[11px] font-semibold leading-tight text-zinc-900 sm:text-sm">Explore</span>
+                                        <span className="mt-0.5 hidden text-[11px] leading-tight text-zinc-400 sm:block">All services</span>
                                     </span>
                                 </Link>
-                            ))}
-
-                            {/* Explore */}
-                            <Link
-                                href="/services"
-                                className="group flex flex-col items-center gap-1.5 px-2 py-3.5 transition-colors hover:bg-zinc-50 sm:flex-row sm:gap-3 sm:px-4 sm:py-5"
-                            >
-                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-900 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white sm:h-9 sm:w-9">
-                                    <GoArrowUpRight className="h-5 w-5" />
-                                </span>
-                                <span className="flex min-w-0 flex-col">
-                                    <span className="text-[11px] font-semibold leading-tight text-zinc-900 sm:text-sm">Explore</span>
-                                    <span className="mt-0.5 hidden text-[11px] leading-tight text-zinc-400 sm:block">All services</span>
-                                </span>
-                            </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </section>
         </>
     );
-} 
+}

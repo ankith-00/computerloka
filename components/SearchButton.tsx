@@ -54,46 +54,45 @@ export default function SearchButton({ className }: { className?: string }) {
                 type="button"
                 aria-label={isOpen ? "Close Search" : "Search"}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`relative p-2 ${
-                    isOpen
-                        ? "rounded-full bg-zinc-900 text-white"
-                        : "text-zinc-700"
-                } ${className || ""}`}
+                className={`relative p-2 ${isOpen
+                    ? "rounded-full bg-zinc-900 text-white"
+                    : "text-zinc-700"
+                    } ${className || ""}`}
             >
                 {isOpen ? (
-                    <IoCloseOutline className="h-6 w-6 md:h-5 md:w-5" />
+                    <IoCloseOutline className="h-5 w-5 cursor-pointer" />
                 ) : (
-                    <IoSearchOutline className="h-6 w-6 md:h-5 md:w-5" />
+                    <IoSearchOutline className="h-5 w-5 cursor-pointer" />
                 )}
             </button>
 
             {/* Modal Overlay - Starts below navbar (top-16) */}
+            {/* Modal Overlay - Starts below navbar (top-16) */}
             <div
-                className={`fixed top-16 inset-x-0 bottom-0 z-[100] flex flex-col items-center pt-4 sm:pt-6 transition-all duration-300 ease-out ${
-                    isOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
-                }`}
+                className={`fixed top-16 inset-x-0 bottom-0 z-[100] flex flex-col items-center pt-4 sm:pt-6 transition-all duration-300 ease-out ${isOpen ? "visible" : "invisible pointer-events-none"
+                    }`}
             >
                 {/* Blurred Backdrop */}
                 <div
-                    className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                    className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-out ${isOpen ? "opacity-100" : "opacity-0"
+                        }`}
                     onClick={() => setIsOpen(false)}
                 />
 
                 {/* Search Container — slides down from top */}
                 <div
-                    className={`relative w-full max-w-2xl px-4 transition-all duration-300 ease-out ${
-                        isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
-                    }`}
+                    className={`relative w-full max-w-2xl px-4 transition-all duration-300 ease-out ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+                        }`}
                 >
                     {/* Search Input */}
-                    <div className="flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2.5 shadow-2xl ring-1 ring-black/5">
+                    <div style={{ borderRadius: "0.4em" }} className="flex items-center gap-2 border border-zinc-200 bg-white px-3 py-2.5 shadow-2xl ring-1 ring-black/5">
                         <IoSearchOutline className="h-5 w-5 shrink-0 text-zinc-400" />
                         <input
                             ref={inputRef}
                             type="text"
-                            placeholder="Search for services, repairs..."
+                            placeholder="Search for services, repairs"
                             className="flex-1 border-0 bg-transparent px-1 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-0 sm:text-base"
-                            style={{ fontFamily: "ClashDisplay" }}
+                            style={{ fontFamily: "var(--font-lexend), Lexend, sans-serif" }}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                         />
